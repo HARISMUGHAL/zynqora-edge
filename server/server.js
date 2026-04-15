@@ -54,7 +54,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors());
+app.options(/.*/, cors());
 
 // ─── 4. Body Parser (10kb limit — prevents large payload attacks) ─────────────
 app.use(express.json({ limit: '10kb' }));
