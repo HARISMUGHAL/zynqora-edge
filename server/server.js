@@ -32,19 +32,20 @@ app.disable('x-powered-by');
 
 // ─── 3. CORS ──────────────────────────────────────────────────────────────────
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://127.0.0.1:3000',
-  process.env.CLIENT_ORIGIN || 'https://zynqoraedge.com'
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  process.env.CLIENT_ORIGIN
 ];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (Postman, curl, server-to-server)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     } else {
-      callback(new Error(`CORS blocked: origin ${origin} is not allowed.`));
+      console.error("[CORS] Blocked:", origin);
+      return callback(new Error("Not allowed by CORS"));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

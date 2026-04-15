@@ -6,7 +6,7 @@ const ChatWidget = () => {
     const [messages, setMessages] = useState(() => {
         return [{ 
             role: 'assistant', 
-            content: "AI assistant is currently under development. It will be available soon." 
+            content: "AI assistant is currently under development and will be available soon." 
         }];
     });
     const [input, setInput] = useState('');
@@ -83,7 +83,7 @@ const ChatWidget = () => {
                                 <button
                                     onClick={() => {
                                         localStorage.removeItem('zynqora_chat_history');
-                                        setMessages([{ role: 'assistant', content: "AI assistant is currently under development. It will be available soon." }]);
+                                        setMessages([{ role: 'assistant', content: "AI assistant is currently under development and will be available soon." }]);
                                     }}
                                     title="Clear chat"
                                     className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-gray-500 hover:text-white"

@@ -21,7 +21,7 @@ const chat = async (req, res) => {
     user.chatHistory.push({ role: 'user', content: message });
     
     // Dummy AI response
-    const aiResponse = "I am a dummy AI response. Our ChatGPT integration is coming soon to help you scale your business!";
+    const aiResponse = "AI assistant is currently under development and will be available soon.";
     
     // Save AI response
     user.chatHistory.push({ role: 'ai', content: aiResponse });
