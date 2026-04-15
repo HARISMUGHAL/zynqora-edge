@@ -34,7 +34,9 @@ app.disable('x-powered-by');
 const allowedOrigins = [
   "http://localhost:3000",
   "http://127.0.0.1:3000",
-  process.env.CLIENT_ORIGIN
+  "https://zynqoraedge.com",
+  "https://www.zynqoraedge.com",
+  "https://zynqora-edge.vercel.app"
 ];
 
 app.use(cors({
@@ -44,13 +46,15 @@ app.use(cors({
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      console.error("[CORS] Blocked:", origin);
+      console.log("❌ CORS BLOCKED:", origin);
       return callback(new Error("Not allowed by CORS"));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
 }));
+
+app.options('*', cors());
 
 // ─── 4. Body Parser (10kb limit — prevents large payload attacks) ─────────────
 app.use(express.json({ limit: '10kb' }));
