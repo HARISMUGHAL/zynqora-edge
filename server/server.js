@@ -63,14 +63,7 @@ app.use(express.urlencoded({ extended: false, limit: '10kb' }));
 // ─── 5. Input Sanitization (NoSQL injection + XSS) ────────────────────────────
 app.use(mongoSanitize);
 
-// ─── 6. Static Files (Sitemap/Robots) & Root Route ──────────────────────────
-app.use(express.static(path.join(__dirname, "../client/public")));
-
-app.get("/", (req, res) => {
-  res.status(200).send("Zynqora Edge API is running 🚀");
-});
-
-// ─── 7. Health Check (useful for uptime monitors / deployment platforms) ───────
+// ─── 6. Health Check ──────────────────────────────────────────────────────────
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
@@ -83,9 +76,18 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api', systemRoutes);
 app.use('/api/users', userRoutes);
 
-// ─── 8. 404 Handler ───────────────────────────────────────────────────────────
-app.use((req, res) => {
-  res.status(404).json({ error: `Route ${req.method} ${req.originalUrl} not found` });
+// ─── 8. API 404 Handler ───────────────────────────────────────────────────────
+// Prevent frontend catch-all from overriding missing API routes.
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: `API Route ${req.method} ${req.originalUrl} not found` });
+});
+
+// ─── 9. Static Files & Frontend Routing ───────────────────────────────────────
+app.use(express.static(path.join(__dirname, "../client/public")));
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get(/(.*)/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 // ─── 9. Global Error Handler ──────────────────────────────────────────────────
