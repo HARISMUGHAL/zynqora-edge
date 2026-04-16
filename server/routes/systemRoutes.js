@@ -16,6 +16,12 @@ const chatLimiter = rateLimit({
   message: { error: 'Chat rate limit exceeded. Please slow down.' }
 });
 
+router.get('/contact', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Contact API is working. Use POST to submit data."
+  });
+});
 router.post('/contact', apiLimiter, submitContact);
 router.post('/chat', chatLimiter, getAiResponse);
 
