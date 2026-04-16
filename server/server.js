@@ -17,8 +17,8 @@ const morgan = require('morgan');
 const REQUIRED_ENV = ['MONGO_URI', 'JWT_SECRET', 'EMAIL_USER', 'EMAIL_PASS'];
 const missingEnv = REQUIRED_ENV.filter((key) => !process.env[key]);
 if (missingEnv.length > 0) {
-  console.error(`❌ FATAL: Missing required environment variables: ${missingEnv.join(', ')}`);
-  process.exit(1);
+  console.warn(`⚠️ WARNING: Missing required environment variables: ${missingEnv.join(', ')}`);
+  console.warn(`⚠️ Server will start but API features may fail gracefully.`);
 }
 
 const app = express();
@@ -63,7 +63,14 @@ app.use(express.urlencoded({ extended: false, limit: '10kb' }));
 // ─── 5. Input Sanitization (NoSQL injection + XSS) ────────────────────────────
 app.use(mongoSanitize);
 
-// ─── 6. Health Check (useful for uptime monitors / deployment platforms) ───────
+// ─── 6. Static Files (Sitemap/Robots) & Root Route ──────────────────────────
+app.use(express.static(path.join(__dirname, "../client/public")));
+
+app.get("/", (req, res) => {
+  res.status(200).send("Zynqora Edge API is running 🚀");
+});
+
+// ─── 7. Health Check (useful for uptime monitors / deployment platforms) ───────
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
