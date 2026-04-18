@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -8,6 +9,7 @@ const services = [
     desc: 'Automate customer support, lead follow-up, and repetitive tasks — so your team focuses on what matters.',
     icon: '🤖',
     accent: '#1E90FF',
+    link: '/ai-chatbot',
   },
   {
     category: 'Software',
@@ -15,13 +17,15 @@ const services = [
     desc: 'We build SaaS and mobile apps with AI built in — products that work smarter as your business scales.',
     icon: '🚀',
     accent: '#7B61FF',
+    link: '/saas-development',
   },
   {
     category: 'Presence',
-    title: 'Web & Digital Systems',
-    desc: 'Websites and digital systems that convert visitors into leads — designed to grow your revenue.',
-    icon: '🌐',
+    title: 'Workflow Automation',
+    desc: 'Streamline your backend with interconnected systems that eliminate manual data entry and save countless hours.',
+    icon: '⚡',
     accent: '#00C9A7',
+    link: '/automation',
   },
   {
     category: 'Strategy',
@@ -29,6 +33,7 @@ const services = [
     desc: 'We audit your business and give you a clear, practical plan for using AI to save time and grow faster.',
     icon: '🎯',
     accent: '#F59E0B',
+    link: null,
   },
 ];
 
@@ -154,9 +159,29 @@ const Services = () => {
                 color: 'rgba(156,163,175,0.65)',
                 fontSize: '0.9rem',
                 lineHeight: 1.7,
+                marginBottom: s.link ? '1.5rem' : '0',
               }}>
                 {s.desc}
               </p>
+              {s.link && (
+                <Link to={s.link} style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  fontFamily: "'Sora', sans-serif",
+                  fontSize: '0.8rem',
+                  fontWeight: 600,
+                  color: s.accent,
+                  textDecoration: 'none',
+                  marginTop: 'auto',
+                }}>
+                  Learn More 
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
