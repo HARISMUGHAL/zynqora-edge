@@ -41,13 +41,16 @@ const Services = () => {
   return (
     <section
       id="services"
+      className="relative w-full bg-[#030712] text-white overflow-hidden"
       style={{
         padding: 'clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem)',
-        background: 'rgba(255,255,255,0.015)',
-        overflow: 'hidden',
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      {/* 🔥 BACKGROUND GLOW */}
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-blue-500 opacity-20 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-500 opacity-20 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         {/* Header */}
         <div style={{
           display: 'flex',
@@ -100,88 +103,99 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.25,0.46,0.45,0.94] }}
-              className="glass card-hover"
-              style={{
-                padding: 'clamp(1.75rem,3vw,2.5rem)',
-                borderRadius: 'clamp(1.25rem,2vw,2rem)',
-                cursor: 'default',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="group relative p-[1px] rounded-[clamp(1.25rem,2vw,2rem)] bg-gradient-to-r from-blue-500/30 to-purple-500/30 cursor-pointer"
             >
-              {/* Corner glow */}
-              <div style={{
-                position: 'absolute',
-                top: '-30px', right: '-30px',
-                width: '100px', height: '100px',
-                borderRadius: '50%',
-                background: `radial-gradient(circle, ${s.accent}22, transparent 70%)`,
-                pointerEvents: 'none',
-              }} />
+              {/* INNER CARD */}
+              <div 
+                className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 transition-all duration-300 flex flex-col overflow-hidden"
+                style={{
+                  borderRadius: 'calc(clamp(1.25rem,2vw,2rem) - 1px)',
+                  padding: 'clamp(1.75rem,3vw,2.5rem)',
+                }}
+              >
+                {/* 🔥 HOVER GLOW */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-blue-500/10 to-purple-500/10 pointer-events-none"></div>
 
-              {/* Icon + category */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                {/* Corner glow existing logic */}
                 <div style={{
-                  width: '44px', height: '44px', borderRadius: '0.875rem',
-                  background: `${s.accent}14`,
-                  border: `1px solid ${s.accent}25`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.3rem',
-                  flexShrink: 0,
-                }}>
-                  {s.icon}
-                </div>
-                <span style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.6rem',
-                  fontWeight: 700,
-                  color: s.accent,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.3em',
-                  opacity: 0.85,
-                }}>
-                  {s.category}
-                </span>
-              </div>
+                  position: 'absolute',
+                  top: '-30px', right: '-30px',
+                  width: '100px', height: '100px',
+                  borderRadius: '50%',
+                  background: `radial-gradient(circle, ${s.accent}22, transparent 70%)`,
+                  pointerEvents: 'none',
+                }} />
 
-              <h3 style={{
-                fontFamily: "'Sora', sans-serif",
-                fontSize: 'clamp(1.25rem,2vw,1.75rem)',
-                fontWeight: 700,
-                color: '#ffffff',
-                marginBottom: '0.875rem',
-                letterSpacing: '-0.3px',
-              }}>
-                {s.title}
-              </h3>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                color: 'rgba(156,163,175,0.65)',
-                fontSize: '0.9rem',
-                lineHeight: 1.7,
-                marginBottom: s.link ? '1.5rem' : '0',
-              }}>
-                {s.desc}
-              </p>
-              {s.link && (
-                <Link to={s.link} style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
+                {/* Icon + category */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', position: 'relative' }}>
+                  <div style={{
+                    width: '44px', height: '44px', borderRadius: '0.875rem',
+                    background: `${s.accent}14`,
+                    border: `1px solid ${s.accent}25`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '1.3rem',
+                    flexShrink: 0,
+                  }}>
+                    {s.icon}
+                  </div>
+                  <span style={{
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.6rem',
+                    fontWeight: 700,
+                    color: s.accent,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.3em',
+                    opacity: 0.85,
+                  }}>
+                    {s.category}
+                  </span>
+                </div>
+
+                <h3 style={{
                   fontFamily: "'Sora', sans-serif",
-                  fontSize: '0.8rem',
-                  fontWeight: 600,
-                  color: s.accent,
-                  textDecoration: 'none',
-                  marginTop: 'auto',
+                  fontSize: 'clamp(1.25rem,2vw,1.75rem)',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  marginBottom: '0.875rem',
+                  letterSpacing: '-0.3px',
+                  position: 'relative',
                 }}>
-                  Learn More 
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </Link>
-              )}
+                  {s.title}
+                </h3>
+                
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  color: 'rgba(156,163,175,0.65)',
+                  fontSize: '0.9rem',
+                  lineHeight: 1.7,
+                  marginBottom: s.link ? '1.5rem' : '0',
+                  position: 'relative',
+                }}>
+                  {s.desc}
+                </p>
+
+                {s.link && (
+                  <Link to={s.link} style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    fontFamily: "'Sora', sans-serif",
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    color: s.accent,
+                    textDecoration: 'none',
+                    marginTop: 'auto',
+                    position: 'relative',
+                  }}>
+                    Learn More 
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </Link>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
