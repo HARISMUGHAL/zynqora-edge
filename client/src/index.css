@@ -90,80 +90,21 @@ img, video {
 
   /* Primary CTA button */
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 0 2rem;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: white;
-    background: linear-gradient(135deg, #1E90FF 0%, #7B61FF 100%);
-    border-radius: 0.875rem;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 24px rgba(30,144,255,0.35), 0 4px 16px rgba(0,0,0,0.3);
-    transition: var(--transition-smooth);
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .btn-primary:hover {
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 0 40px rgba(30,144,255,0.55), 0 0 80px rgba(123,97,255,0.2), 0 8px 24px rgba(0,0,0,0.4);
-  }
-  .btn-primary:hover::before {
-    opacity: 1;
+    @apply px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-[1.05] transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-purple-500/30 inline-flex items-center justify-center font-sora font-bold text-sm tracking-widest uppercase text-white whitespace-nowrap;
   }
   .btn-primary:active {
-    transform: scale(0.97);
+    @apply scale-95;
   }
   .btn-primary:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
+    @apply opacity-50 cursor-not-allowed scale-100;
   }
 
-  /* Ghost button */
+  /* Ghost button / Secondary */
   .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 52px;
-    padding: 0 2rem;
-    font-family: 'Sora', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.85);
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 0.875rem;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-    white-space: nowrap;
-  }
-  .btn-ghost:hover {
-    background: rgba(255,255,255,0.09);
-    border-color: rgba(255,255,255,0.22);
-    transform: scale(1.05) translateY(-1px);
-    box-shadow: 0 0 20px rgba(123,97,255,0.2), 0 4px 16px rgba(0,0,0,0.3);
+    @apply px-8 py-4 rounded-xl border border-white/20 hover:bg-white hover:text-black transition-all duration-300 inline-flex items-center justify-center font-sora font-bold text-sm tracking-widest uppercase text-white whitespace-nowrap;
   }
   .btn-ghost:active {
-    transform: scale(0.97);
+    @apply scale-95;
   }
 
   /* Gradient text utility */

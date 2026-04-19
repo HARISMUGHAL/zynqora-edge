@@ -57,13 +57,13 @@ const logos = [
 
 const TechStack = () => {
   return (
-    <section className="py-24 px-8 lg:px-20 overflow-hidden relative min-h-[600px] flex flex-col items-center justify-center">
+    <section className="py-20 sm:py-24 md:py-28 px-6 overflow-hidden relative min-h-[600px] flex flex-col items-center justify-center">
       {/* Heading */}
       <div className="text-center mb-16 relative z-10">
-        <div className="text-primaryBase text-[10px] font-bold uppercase tracking-[0.4em] mb-4">Infrastructure</div>
-        <h2 className="text-3xl lg:text-5xl font-bold text-white tracking-tight">
+        <div className="section-label mb-4">Infrastructure</div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 text-white font-sora">
           Technology Powering{' '}
-          <span className="bg-gradient-to-r from-primaryBase to-secondaryBase bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#1E90FF] to-[#7B61FF] bg-clip-text text-transparent">
             Our Systems
           </span>
         </h2>

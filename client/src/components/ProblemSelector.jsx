@@ -15,24 +15,16 @@ const statusStyles = {
 
 const ProblemSelector = () => {
   return (
-    <section style={{ padding: 'clamp(4rem,8vw,6rem) clamp(1.25rem,5vw,5rem)', overflow: 'hidden' }}>
+    <section className="py-20 sm:py-24 md:py-28 px-6 overflow-hidden">
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <div className="section-label">Common Pain Points</div>
-          <h2 style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: 'clamp(1.75rem,4vw,3.25rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            letterSpacing: '-0.5px',
-            lineHeight: 1.15,
-            marginTop: '0.75rem',
-          }}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-2 mt-3 text-white font-sora">
             What's Holding Your{' '}
-            <span className="gradient-text">Business Back?</span>
+            <span className="bg-gradient-to-r from-[#1E90FF] to-[#7B61FF] bg-clip-text text-transparent">Business Back?</span>
           </h2>
-          <p style={{ color: 'rgba(156,163,175,0.6)', marginTop: '1rem', fontFamily: "'Inter', sans-serif", fontSize: '0.9rem' }}>
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
             Common problems we fix with AI systems.
           </p>
         </div>
@@ -52,12 +44,7 @@ const ProblemSelector = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: idx * 0.1, duration: 0.55, ease: [0.25,0.46,0.45,0.94] }}
-                className="glass card-hover"
-                style={{
-                  padding: 'clamp(1.5rem,3vw,2.5rem)',
-                  borderRadius: 'clamp(1.25rem,2vw,1.75rem)',
-                  cursor: 'default',
-                }}
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-white/20 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.45),0_0_30px_rgba(30,144,255,0.06)]"
               >
                 {/* Status badge */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
@@ -78,17 +65,10 @@ const ProblemSelector = () => {
                   <span style={{ fontSize: '1.4rem', opacity: 0.25 }}>{p.icon}</span>
                 </div>
 
-                <h3 style={{
-                  fontFamily: "'Sora', sans-serif",
-                  fontSize: 'clamp(1.25rem,2.5vw,1.75rem)',
-                  fontWeight: 700,
-                  color: '#ffffff',
-                  marginBottom: '0.75rem',
-                  letterSpacing: '-0.3px',
-                }}>
+                <h3 className="font-sora text-xl lg:text-2xl font-bold text-white mb-3 tracking-tight">
                   {p.title}
                 </h3>
-                <p style={{ fontFamily: "'Inter', sans-serif", color: 'rgba(156,163,175,0.65)', fontSize: '0.875rem', lineHeight: 1.65 }}>
+                <p className="text-gray-400 text-sm leading-relaxed">
                   {p.desc}
                 </p>
               </motion.div>

@@ -12,22 +12,14 @@ const Process = () => {
   return (
     <section
       id="process"
-      style={{ padding: 'clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem)', overflow: 'hidden' }}
+      className="py-20 sm:py-24 md:py-28 px-6 overflow-hidden"
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
+        <div className="mb-10 sm:mb-14 md:mb-16">
           <div className="section-label">How We Work</div>
-          <h2 style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: 'clamp(1.75rem,4vw,3.25rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            letterSpacing: '-0.5px',
-            lineHeight: 1.15,
-            marginTop: '0.75rem',
-          }}>
-            The <span className="gradient-text">Roadmap</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-3 text-white font-sora">
+            The <span className="bg-gradient-to-r from-[#1E90FF] to-[#7B61FF] bg-clip-text text-transparent">Roadmap</span>
           </h2>
         </div>
 

@@ -31,25 +31,10 @@ const FinalCTA = () => {
   return (
     <section
       id="contact"
-      style={{
-        padding: 'clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
+      className="py-20 sm:py-24 md:py-28 px-6 relative overflow-hidden"
     >
       {/* Ambient glow */}
-      <div style={{
-        position: 'absolute',
-        top: '50%', left: '50%',
-        transform: 'translate(-50%,-50%)',
-        width: 'min(700px, 100vw)',
-        height: 'min(700px, 100vw)',
-        background: 'radial-gradient(circle, rgba(30,144,255,0.05), rgba(123,97,255,0.04), transparent 70%)',
-        filter: 'blur(60px)',
-        borderRadius: '50%',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(700px,100vw)] h-[min(700px,100vw)] bg-[radial-gradient(circle,rgba(30,144,255,0.05),rgba(123,97,255,0.04),transparent_70%)] blur-[60px] rounded-full pointer-events-none z-0" />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{
@@ -67,27 +52,11 @@ const FinalCTA = () => {
             transition={{ duration: 0.65, ease: [0.25,0.46,0.45,0.94] }}
           >
             <div className="section-label">Get In Touch</div>
-            <h2 style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize: 'clamp(2rem,5vw,3.75rem)',
-              fontWeight: 800,
-              color: '#ffffff',
-              letterSpacing: '-0.5px',
-              lineHeight: 1.1,
-              marginTop: '0.75rem',
-              marginBottom: '1.25rem',
-            }}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-3 text-white font-sora">
               Let's Build Your <br className="hidden sm:block" />
-              <span className="gradient-text">AI System</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">AI System</span>
             </h2>
-            <p style={{
-              fontFamily: "'Inter', sans-serif",
-              color: 'rgba(156,163,175,0.7)',
-              fontSize: 'clamp(0.9rem,2vw,1.05rem)',
-              lineHeight: 1.7,
-              marginBottom: '2.5rem',
-              maxWidth: '400px',
-            }}>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-10 max-w-[400px]">
               Tell us what you need — we'll design the solution and get it built fast.
             </p>
 
@@ -134,13 +103,7 @@ const FinalCTA = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.65, delay: 0.1, ease: [0.25,0.46,0.45,0.94] }}
-            className="glass"
-            style={{
-              padding: 'clamp(1.75rem,4vw,2.75rem)',
-              borderRadius: 'clamp(1.25rem,2vw,2rem)',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 transition-all duration-300 hover:border-white/20 hover:shadow-xl relative overflow-hidden"
           >
             {/* Glow corner */}
             <div style={{
@@ -200,11 +163,11 @@ const FinalCTA = () => {
 
               <button
                 type="submit"
-                className="btn-primary"
+                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-[1.05] transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-purple-500/30 font-semibold mt-2 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
                 disabled={status === 'sending'}
               >
                 {status === 'sending' ? (
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ animation: 'spin 1s linear infinite' }}>
                       <circle cx="8" cy="8" r="6" stroke="rgba(255,255,255,0.3)" strokeWidth="2"/>
                       <path d="M8 2a6 6 0 0 1 6 6" stroke="white" strokeWidth="2" strokeLinecap="round"/>

@@ -27,22 +27,14 @@ const CaseStudies = () => {
   return (
     <section
       id="cases"
-      style={{ padding: 'clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,5rem)', overflow: 'hidden' }}
+      className="py-20 sm:py-24 md:py-28 px-6 overflow-hidden"
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem,5vw,4rem)' }}>
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
           <div className="section-label">Real Results</div>
-          <h2 style={{
-            fontFamily: "'Sora', sans-serif",
-            fontSize: 'clamp(1.75rem,4vw,3.25rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            letterSpacing: '-0.5px',
-            lineHeight: 1.15,
-            marginTop: '0.75rem',
-          }}>
-            What We've <span className="gradient-text">Built</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6 mt-3 text-white font-sora">
+            What We've <span className="bg-gradient-to-r from-[#1E90FF] to-[#7B61FF] bg-clip-text text-transparent">Built</span>
           </h2>
         </div>
 
@@ -58,10 +50,8 @@ const CaseStudies = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ delay: idx * 0.12, duration: 0.6, ease: [0.25,0.46,0.45,0.94] }}
-              className="glass card-hover"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-white/20 hover:shadow-xl hover:-translate-y-1"
               style={{
-                padding: 'clamp(1.75rem,3vw,2.75rem)',
-                borderRadius: 'clamp(1.25rem,2vw,2rem)',
                 position: 'relative',
                 overflow: 'hidden',
               }}
